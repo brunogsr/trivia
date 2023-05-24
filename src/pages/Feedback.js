@@ -16,9 +16,14 @@ class Feedback extends Component {
     });
   }
 
-  handleClick = () => {
+  handleClickToPlayAgain = () => {
     const { history } = this.props;
     history.push('/');
+  };
+
+  handleClickToRanking = () => {
+    const { history } = this.props;
+    history.push('/ranking');
   };
 
   render() {
@@ -32,9 +37,15 @@ class Feedback extends Component {
         <p data-testid="feedback-total-question">{assertions}</p>
         <button
           data-testid="btn-play-again"
-          onClick={ this.handleClick }
+          onClick={ this.handleClickToPlayAgain }
         >
           Play Again
+        </button>
+        <button
+          data-testid="btn-ranking"
+          onClick={ this.handleClickToRanking }
+        >
+          Ranking
         </button>
       </div>
     );
