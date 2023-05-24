@@ -16,6 +16,11 @@ class Feedback extends Component {
     });
   }
 
+  handleClick = () => {
+    const { history } = this.props;
+    history.push('/');
+  };
+
   render() {
     const { feedbackText } = this.state;
     const { assertions, score } = this.props;
@@ -25,6 +30,12 @@ class Feedback extends Component {
         <p data-testid="feedback-text">{feedbackText}</p>
         <p data-testid="feedback-total-score">{score}</p>
         <p data-testid="feedback-total-question">{assertions}</p>
+        <button
+          data-testid="btn-play-again"
+          onClick={ this.handleClick }
+        >
+          Play Again
+        </button>
       </div>
     );
   }
@@ -32,6 +43,9 @@ class Feedback extends Component {
 
 Feedback.propTypes = {
   assertions: PropTypes.number.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
   score: PropTypes.number.isRequired,
 };
 
